@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arsath — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#15131C;
+    --paper:#F6F4EF;
+    --violet:#7C5CFC;
+    --coral:#FF6B57;
+    --line: rgba(21,19,28,0.12);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+  }
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important; transition:none!important;} }
+  a{color:inherit;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 28px;}
+
+  /* nav */
+  nav{position:sticky;top:0;z-index:50;background:rgba(246,244,239,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;}
+  .logo span{color:var(--violet);}
+  .nav-links{display:flex;gap:30px;list-style:none;font-size:14px;font-weight:500;}
+  .nav-links a{text-decoration:none;opacity:.7;transition:opacity .2s;}
+  .nav-links a:hover{opacity:1;}
+  .nav-cta{background:var(--ink);color:var(--paper);padding:10px 20px;border-radius:3px;font-size:13px;font-weight:600;text-decoration:none;}
+  .nav-cta:hover{background:var(--violet);}
+  @media (max-width:760px){.nav-links{display:none;}}
+
+  /* hero */
+  .hero{padding:88px 0 72px;}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr 0.85fr;gap:48px;align-items:center;}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--violet);letter-spacing:.04em;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+  .tag::before{content:'';width:7px;height:7px;background:var(--violet);border-radius:50%;}
+  h1{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(36px,5vw,56px);line-height:1.08;letter-spacing:-0.01em;margin-bottom:20px;}
+  h1 .accent{color:var(--coral);}
+  .hero p.lede{font-size:17px;color:rgba(21,19,28,0.72);max-width:440px;margin-bottom:30px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{background:var(--violet);color:#fff;padding:14px 26px;border-radius:3px;text-decoration:none;font-weight:600;font-size:14px;display:inline-block;transition:background .2s, transform .2s;}
+  .btn-primary:hover{background:var(--ink);transform:translateY(-2px);}
+  .btn-ghost{border:1px solid var(--line);padding:13px 24px;border-radius:3px;text-decoration:none;font-weight:600;font-size:14px;display:inline-block;transition:border-color .2s;}
+  .btn-ghost:hover{border-color:var(--ink);}
+
+  .id-card{background:var(--ink);color:var(--paper);border-radius:6px;padding:28px;font-family:'JetBrains Mono',monospace;font-size:13px;}
+  .id-card .row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(246,244,239,0.12);}
+  .id-card .row:last-child{border-bottom:none;}
+  .id-card .k{opacity:.55;}
+  .id-card .v{color:#fff;text-align:right;}
+  .id-card .v.violet{color:var(--violet);}
+  .id-card .v.coral{color:var(--coral);}
+  .id-card-head{display:flex;justify-content:space-between;margin-bottom:18px;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:15px;}
+  .id-card-head span{opacity:.5;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:400;}
+
+  /* roles strip */
+  .strip{background:var(--ink);color:var(--paper);padding:13px 0;overflow:hidden;white-space:nowrap;}
+  .strip-inner{display:inline-flex;gap:44px;animation:scroll 22s linear infinite;font-family:'JetBrains Mono',monospace;font-size:13px;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .strip span.acc{color:var(--coral);}
+
+  section{padding:84px 0;}
+  .section-head{max-width:520px;margin-bottom:46px;}
+  .section-eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--coral);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px;}
+  h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,36px);letter-spacing:-0.01em;}
+
+  /* about */
+  .about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
+  .about p{color:rgba(21,19,28,0.75);margin-bottom:16px;}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;}
+  .stat{background:var(--paper);padding:24px;}
+  .stat .num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;color:var(--violet);}
+  .stat .lbl{font-size:12px;color:rgba(21,19,28,0.6);margin-top:4px;}
+
+  /* skills */
+  .skills{background:#fff;}
+  .skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .skill{background:#fff;padding:28px 24px;transition:background .2s;}
+  .skill:hover{background:var(--paper);}
+  .skill .ic{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--violet);margin-bottom:14px;}
+  .skill h4{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;margin-bottom:8px;}
+  .skill p{font-size:13px;color:rgba(21,19,28,0.65);}
+  @media (max-width:760px){.skill-grid{grid-template-columns:1fr;} .about .wrap{grid-template-columns:1fr;}}
+
+  /* work */
+  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .work-card{border:1px solid var(--line);border-radius:6px;padding:28px;background:var(--paper);transition:border-color .2s, transform .2s;}
+  .work-card:hover{border-color:var(--violet);transform:translateY(-3px);}
+  .work-tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--coral);text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px;}
+  .work-card h3{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;margin-bottom:10px;}
+  .work-card p{font-size:14px;color:rgba(21,19,28,0.68);margin-bottom:16px;}
+  .work-meta{font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.6;border-top:1px solid var(--line);padding-top:14px;}
+  @media (max-width:760px){.work-grid{grid-template-columns:1fr;}}
+
+  /* contact */
+  .cta-band{background:var(--violet);color:#fff;}
+  .cta-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;}
+  .cta-band h2{color:#fff;max-width:420px;}
+  .cta-band p{opacity:.85;margin-top:10px;font-size:14px;}
+  .contact-block{display:flex;flex-direction:column;gap:14px;font-family:'JetBrains Mono',monospace;font-size:15px;}
+  .contact-block a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.4);padding-bottom:2px;}
+  .contact-block a:hover{border-color:#fff;}
+
+  footer{padding:40px 0;}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .foot-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:17px;}
+  .foot-meta{font-family:'JetBrains Mono',monospace;font-size:12px;opacity:.55;}
+
+  :focus-visible{outline:2px solid var(--violet);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">arsath<span>.dev</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#work">Work</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="tag">B.E CSE · 1st Year</div>
+      <h1>Building sites by day,<br>making content by <span class="accent">night.</span></h1>
+      <p class="lede">I'm Arsath — a first-year Computer Science student who codes websites and creates content. Still early in college, already shipping things.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Let's talk</a>
+        <a href="#work" class="btn-ghost">See my work</a>
+      </div>
+    </div>
+
+    <div class="id-card">
+      <div class="id-card-head">Arsath <span>ID_0001</span></div>
+      <div class="row"><span class="k">Course</span><span class="v">B.E Computer Science</span></div>
+      <div class="row"><span class="k">Year</span><span class="v violet">1st Year</span></div>
+      <div class="row"><span class="k">Focus</span><span class="v">Web Dev + Content</span></div>
+      <div class="row"><span class="k">Status</span><span class="v coral">Open to work</span></div>
+      <div class="row"><span class="k">Phone</span><span class="v">+91 97912 25986</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip" aria-hidden="true">
+  <div class="strip-inner">
+    <span>WEB DEVELOPMENT <span class="acc">·</span></span>
+    <span>CONTENT CREATION <span class="acc">·</span></span>
+    <span>HTML / CSS / JS <span class="acc">·</span></span>
+    <span>VIDEO EDITING <span class="acc">·</span></span>
+    <span>UI DESIGN <span class="acc">·</span></span>
+    <span>WEB DEVELOPMENT <span class="acc">·</span></span>
+    <span>CONTENT CREATION <span class="acc">·</span></span>
+    <span>HTML / CSS / JS <span class="acc">·</span></span>
+    <span>VIDEO EDITING <span class="acc">·</span></span>
+    <span>UI DESIGN <span class="acc">·</span></span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div>
+      <div class="section-eyebrow">About me</div>
+      <h2 style="margin-bottom:18px;">Two interests, one direction.</h2>
+      <p>I'm currently a first-year B.E Computer Science Engineering student, just getting started on the technical side of things in college. Outside of coursework, I've been building websites and creating content for a while — it's how I first got into tech.</p>
+      <p>I like the mix: development teaches me to think in systems, content creation teaches me to think about an audience. I'm using my first year to sharpen both.</p>
+    </div>
+    <div class="about-stats">
+      <div class="stat"><div class="num">1st</div><div class="lbl">Year, B.E CSE</div></div>
+      <div class="stat"><div class="num">2+</div><div class="lbl">Areas of focus</div></div>
+      <div class="stat"><div class="num">Web</div><div class="lbl">Dev background</div></div>
+      <div class="stat"><div class="num">∞</div><div class="lbl">Things to learn</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">What I do</div>
+      <h2>A developer's logic, a creator's eye.</h2>
+    </div>
+    <div class="skill-grid">
+      <div class="skill">
+        <div class="ic">01 — DEV</div>
+        <h4>Web Development</h4>
+        <p>Building and styling websites — from layout to interaction — and learning the fundamentals through my CSE coursework.</p>
+      </div>
+      <div class="skill">
+        <div class="ic">02 — CREATE</div>
+        <h4>Content Creation</h4>
+        <p>Planning, shooting, and editing content for social platforms, with an eye for what actually gets watched.</p>
+      </div>
+      <div class="skill">
+        <div class="ic">03 — LEARN</div>
+        <h4>Computer Science</h4>
+        <p>First-year CSE student building a foundation in programming, problem-solving, and core CS concepts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">Selected work</div>
+      <h2>A few things I've worked on.</h2>
+    </div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-tag">Web Development</div>
+        <h3>Personal & client websites</h3>
+        <p>Responsive websites built with HTML, CSS and JavaScript — landing pages, portfolios, and simple business sites.</p>
+        <div class="work-meta">HTML · CSS · JavaScript</div>
+      </div>
+      <div class="work-card">
+        <div class="work-tag">Content Creation</div>
+        <h3>Short-form & social content</h3>
+        <p>Concept, filming, and editing for short-form videos — built around what keeps an audience watching.</p>
+        <div class="work-meta">Editing · Scripting · Filming</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Got a project or idea?</h2>
+      <p>Reach out directly — I usually reply fast.</p>
+    </div>
+    <div class="contact-block">
+      <a href="tel:+919791225986">📞 +91 97912 25986</a>
+      <span style="font-size:13px;opacity:.75;">B.E CSE, 1st Year</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-logo">arsath<span style="color:#7C5CFC">.</span></div>
+    <div class="foot-meta">Web Developer · Content Creator · B.E CSE 1st Year</div>
+  </div>
+</footer>
+
+</body>
+</html>
